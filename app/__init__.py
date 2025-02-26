@@ -3,7 +3,8 @@
 import os
 from flask import Flask
 from .config import config
-from .extensions import db
+from .extensions import db,migrate
+from .auth import bp as auth_bp
 
 
 
@@ -12,7 +13,7 @@ def create_app(config_name =None):
     app = Flask(__name__)
     configure_app(app, config_name)
     configure_extensions(app)
-    # configure_blueprints(app)
+    configure_blueprints(app)
     return app
 
 
@@ -27,7 +28,16 @@ def configure_extensions(app):
     # 注册数据库连接
     db.init_app(app)
     # Init Flask-Migrate
+    migrate.init_app(app, db)
 
-# def configure_blueprints(app):
-#     app.register_blueprint(api_bp, url_prefix='/api')
+def configure_blueprints(app):
+    '''
+    注册蓝图
+    '''
+    app.register_blueprint(auth_bp, url_prefix='/auth')
 
+
+
+
+
+from . import models
