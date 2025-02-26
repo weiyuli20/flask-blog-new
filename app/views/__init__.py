@@ -1,1 +1,2 @@
-https://spacewander.github.io/explore-flask-zh/7-blueprints.html
+# https://spacewander.github.io/explore-flask-zh/7-blueprints.html
+
