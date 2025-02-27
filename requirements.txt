@@ -17,3 +17,6 @@ SQLAlchemy==2.0.38
 typing-extensions==4.12.2
 werkzeug==3.0.6
 zipp==3.20.2
+flask-login
+flask-wtf
+email-validator
